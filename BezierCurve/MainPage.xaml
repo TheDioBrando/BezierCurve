@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:local="clr-namespace:BezierCurve"
+             x:Class="BezierCurve.MainPage"
+             BackgroundColor="Gray">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:MultiMathExpressionConverter x:Key="Math"/>
+            <local:CoordsConcatMultiConverter x:Key="CoordsConcat"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <local:BezierViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <Grid x:Name="G1" HeightRequest="250"
+           WidthRequest="500"
+           BackgroundColor="White">
+            <Line Stroke="Black" StrokeThickness="1" x:Name="L1">
+                <Line.X1>
+                    <MultiBinding Converter="{StaticResource Math}" ConverterParameter="x0 + x1">
+                        <Binding Path="Ellipse1.X"/>
+                        <Binding Path="Line.LineOffset"/>
+                    </MultiBinding>
+                </Line.X1>
+                <Line.Y1>
+                    <MultiBinding Converter="{StaticResource Math}" ConverterParameter="x0 + x1">
+                        <Binding Path="Ellipse1.Y"/>
+                        <Binding Path="Line.LineOffset" />
+                    </MultiBinding>
+                </Line.Y1>
+                <Line.X2>
+                    <MultiBinding Converter="{StaticResource Math}" ConverterParameter="x0 + x1">
+                        <Binding Path="Ellipse2.X"/>
+                        <Binding Path="Line.LineOffset"/>
+                    </MultiBinding>
+                </Line.X2>
+                <Line.Y2>
+                    <MultiBinding Converter="{StaticResource Math}" ConverterParameter="x0 + x1">
+                        <Binding Path="Ellipse2.Y"/>
+                        <Binding Path="Line.LineOffset"/>
+                    </MultiBinding>
+                </Line.Y2>
+            </Line>
+
+            <Line Stroke="Black" StrokeThickness="1" x:Name="L2">
+                <Line.X1>
+                    <MultiBinding Converter="{StaticResource Math}" ConverterParameter="x0 + x1">
+                        <Binding Path="Ellipse3.X"/>
+                        <Binding Path="Line.LineOffset"/>
+                    </MultiBinding>
+                </Line.X1>
+                <Line.Y1>
+                    <MultiBinding Converter="{StaticResource Math}" ConverterParameter="x0 + x1">
+                        <Binding Path="Ellipse3.Y"/>
+                        <Binding Path="Line.LineOffset" />
+                    </MultiBinding>
+                </Line.Y1>
+                <Line.X2>
+                    <MultiBinding Converter="{StaticResource Math}" ConverterParameter="x0 + x1">
+                        <Binding Path="Ellipse4.X"/>
+                        <Binding Path="Line.LineOffset"/>
+                    </MultiBinding>
+                </Line.X2>
+                <Line.Y2>
+                    <MultiBinding Converter="{StaticResource Math}" ConverterParameter="x0 + x1">
+                        <Binding Path="Ellipse4.Y"/>
+                        <Binding Path="Line.LineOffset"/>
+                    </MultiBinding>
+                </Line.Y2>
+            </Line>
+
+            <Line Stroke="Black" StrokeThickness="1" x:Name="L3">
+                <Line.X1>
+                    <MultiBinding Converter="{StaticResource Math}" ConverterParameter="x0 + x1">
+                        <Binding Path="Ellipse4.X"/>
+                        <Binding Path="Line.LineOffset"/>
+                    </MultiBinding>
+                </Line.X1>
+                <Line.Y1>
+                    <MultiBinding Converter="{StaticResource Math}" ConverterParameter="x0 + x1">
+                        <Binding Path="Ellipse4.Y"/>
+                        <Binding Path="Line.LineOffset" />
+                    </MultiBinding>
+                </Line.Y1>
+                <Line.X2>
+                    <MultiBinding Converter="{StaticResource Math}" ConverterParameter="x0 + x1">
+                        <Binding Path="Ellipse5.X"/>
+                        <Binding Path="Line.LineOffset"/>
+                    </MultiBinding>
+                </Line.X2>
+                <Line.Y2>
+                    <MultiBinding Converter="{StaticResource Math}" ConverterParameter="x0 + x1">
+                        <Binding Path="Ellipse5.Y"/>
+                        <Binding Path="Line.LineOffset"/>
+                    </MultiBinding>
+                </Line.Y2>
+            </Line>
+
+            <Line Stroke="Black" StrokeThickness="1" x:Name="L4">
+                <Line.X1>
+                    <MultiBinding Converter="{StaticResource Math}" ConverterParameter="x0 + x1">
+                        <Binding Path="Ellipse6.X"/>
+                        <Binding Path="Line.LineOffset"/>
+                    </MultiBinding>
+                </Line.X1>
+                <Line.Y1>
+                    <MultiBinding Converter="{StaticResource Math}" ConverterParameter="x0 + x1">
+                        <Binding Path="Ellipse6.Y"/>
+                        <Binding Path="Line.LineOffset" />
+                    </MultiBinding>
+                </Line.Y1>
+                <Line.X2>
+                    <MultiBinding Converter="{StaticResource Math}" ConverterParameter="x0 + x1">
+                        <Binding Path="Ellipse7.X"/>
+                        <Binding Path="Line.LineOffset"/>
+                    </MultiBinding>
+                </Line.X2>
+                <Line.Y2>
+                    <MultiBinding Converter="{StaticResource Math}" ConverterParameter="x0 + x1">
+                        <Binding Path="Ellipse7.Y"/>
+                        <Binding Path="Line.LineOffset"/>
+                    </MultiBinding>
+                </Line.Y2>
+            </Line>
+
+            <Path x:Name="Path1" Stroke="Black" StrokeThickness="3">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathFigure x:Name="Figure">
+                            <BezierSegment x:Name="BS1"/>
+                            <BezierSegment x:Name="BS2"/>
+                        </PathFigure>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+
+            <Ellipse x:Name="P1"
+                 Fill="Red"
+                 WidthRequest="{Binding Ellipse1.Height}"
+                 HeightRequest="{Binding Ellipse1.Height}"
+                 HorizontalOptions="Start"
+                 VerticalOptions="Start"
+                 TranslationX="{Binding Ellipse1.X}"
+                 TranslationY="{Binding Ellipse1.Y}"/>
+
+            <local:PanContainer Xcoord="140" Ycoord="85">
+                <Ellipse x:Name="P2"
+                         Fill="Green"
+                         WidthRequest="{Binding Ellipse2.Height}"
+                         HeightRequest="{Binding Ellipse2.Height}"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Start"
+                         TranslationX="{Binding Ellipse2.X, Mode=TwoWay}"
+                         TranslationY="{Binding Ellipse2.Y, Mode=TwoWay}"/>
+            </local:PanContainer>
+
+            <local:PanContainer Xcoord="220" Ycoord="195">
+                <Ellipse x:Name="P3"
+                         Fill="Green"
+                         WidthRequest="{Binding Ellipse3.Height}"
+                         HeightRequest="{Binding Ellipse3.Height}"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Start"
+                         TranslationX="{Binding Ellipse3.X, Mode=TwoWay}"
+                         TranslationY="{Binding Ellipse3.Y, Mode=TwoWay}"/>
+            </local:PanContainer>
+
+            <local:PanContainer Xcoord="275" Ycoord="70">
+                <Ellipse x:Name="P4"
+                         Fill="Green"
+                         WidthRequest="{Binding Ellipse4.Height}"
+                         HeightRequest="{Binding Ellipse4.Height}"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Start"
+                         TranslationX="{Binding Ellipse4.X, Mode=TwoWay}"
+                         TranslationY="{Binding Ellipse4.Y, Mode=TwoWay}"/>
+            </local:PanContainer>
+
+            <local:PanContainer Xcoord="315" Ycoord="195">
+                <Ellipse x:Name="P5"
+                         Fill="Green"
+                         WidthRequest="{Binding Ellipse5.Height}"
+                         HeightRequest="{Binding Ellipse5.Height}"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Start"
+                         TranslationX="{Binding Ellipse5.X, Mode=TwoWay}"
+                         TranslationY="{Binding Ellipse5.Y, Mode=TwoWay}"/>
+            </local:PanContainer>
+
+            <local:PanContainer Xcoord="450" Ycoord="125">
+                <Ellipse x:Name="P6"
+                         Fill="Green"
+                         WidthRequest="{Binding Ellipse6.Height}"
+                         HeightRequest="{Binding Ellipse6.Height}"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Start"
+                         TranslationX="{Binding Ellipse6.X, Mode=TwoWay}"
+                         TranslationY="{Binding Ellipse6.Y, Mode=TwoWay}"/>
+            </local:PanContainer>
+
+            <Ellipse x:Name="P7"
+                 Fill="Red"
+                 WidthRequest="{Binding Ellipse7.Height}"
+                 HeightRequest="{Binding Ellipse7.Height}"
+                 HorizontalOptions="Start"
+                 VerticalOptions="Start"
+                 TranslationX="{Binding Ellipse7.X}"
+                 TranslationY="{Binding Ellipse7.Y}"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>
